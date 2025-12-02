@@ -14,6 +14,7 @@ RUN apt-get update && \
   libvirt-clients \
   libvirt-daemon \
   qemu-system-x86 && \
+  wmctrl && \
   chmod 777 -R /config
 
 ### Stage 2: Downloas and Install SDK

@@ -21,3 +21,4 @@ kepler --version
 start_simulator
 wait_until_simulator_is_running
 wait_until_simulator_is_connected
+wmctrl -c "Emulator Running in Nested Virtualization"
