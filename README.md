@@ -7,9 +7,6 @@ export INSTALLER_SCRIPT=
 export SDK_URL=
 export SIM_URL=
 export DIRECTED_ID=
-export KEPLER_TOKEN=
-export KEPLER_CID=
-export NPM_REGISTRY=
 ```
 
 ```sh

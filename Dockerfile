@@ -46,8 +46,6 @@ RUN mkdir -p ${SDK_ROOT} && chown abc:abc -R ${SDK_ROOT}
 
 USER abc
 
-COPY .npmrc /config/.npmrc
-
 RUN  curl -fsSL ${INSTALLER_SCRIPT} | bash -s -- \
   --sdk-url=${SDK_URL} \
   --sim-url=${SIM_URL} \
@@ -56,7 +54,7 @@ RUN  curl -fsSL ${INSTALLER_SCRIPT} | bash -s -- \
 
 RUN npm add -g appium@2.2.2 \
   && npm add -g @appium/types \
-  &&  appium driver install --source=npm @amazon-devices/appium-kepler-driver@3.30.0 \
+  && appium driver install --source=npm @amazon-devices/appium-kepler-driver@3.30.0 \
   && npm add -g selenium-webdriver
 
 ### Stage 2: Automatino Test
