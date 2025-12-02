@@ -1,0 +1,23 @@
+#!/bin/bash
+
+function start_simulator {
+    echo "Start Simulator"
+    kepler device simulator start || true
+}
+
+function wait_until_simulator_is_running {
+    echo "Wait until Simulator is running"
+    while  [ "$(kepler device simulator status | jq -r .running)" != "true" ]; do echo "Simulator is not running"; sleep 2; done
+    echo "Simulator is running"
+}
+
+function wait_until_simulator_is_connected {
+    echo "Wait until Simulator is connected"
+    while  [ "$(kepler device is-connected -d Simulator)" != "Device Simulator is connected" ]; do echo "Device Simulator is not connected"; sleep 5; done
+    echo "Device Simulator is connected"
+}
+
+kepler --version
+start_simulator
+wait_until_simulator_is_running
+wait_until_simulator_is_connected

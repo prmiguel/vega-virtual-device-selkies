@@ -1,0 +1,28 @@
+---
+services:
+  k-virtual-device:
+    image: k-virtual-device
+    platform: linux/amd64
+    container_name: kvd
+    build:
+      context: .
+      args:
+        - KEPLER_TOKEN=${KEPLER_TOKEN}
+        - SDK_VERSION=${SDK_VERSION}
+        - INSTALLER_SCRIPT=${INSTALLER_SCRIPT}
+        - SDK_URL=${SDK_URL}
+        - SIM_URL=${SIM_URL}
+        - DIRECTED_ID=${DIRECTED_ID}
+    environment:
+    #   - PUID=1000
+    #   - PGID=1000
+      - TZ=Etc/UTC
+    privileged: true
+    network_mode: "host"
+    ports:
+      - 3000:3000
+      - 3001:3001
+    shm_size: "2gb"
+    devices:
+      - /dev/kvm:/dev/kvm
+    restart: unless-stopped
