@@ -17,9 +17,28 @@ function wait_until_simulator_is_connected {
     echo "Device Simulator is connected"
 }
 
+function close_popup {
+    echo "Close popup"
+    wmctrl -c "Emulator Running in Nested Virtualization"
+}
+
+function install_app {
+    echo "Install App"
+    kepler device install-app -d Simulator -p $PACKAGE_PATH
+}
+
+function run_app {
+    echo "Run App"
+    kepler device launch-app -d Simulator -a $APP_NAME
+}
+
 kepler --version
 start_simulator
+close_popup
 wait_until_simulator_is_running
+close_popup
 wait_until_simulator_is_connected
-wmctrl -c "Emulator Running in Nested Virtualization"
+close_popup
 kepler device uninstall-app -a com.amazon.keplerlauncherapp.main
+install_app
+run_app

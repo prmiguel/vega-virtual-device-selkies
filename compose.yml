@@ -17,6 +17,10 @@ services:
     #   - PUID=1000
     #   - PGID=1000
       - TZ=Etc/UTC
+      - PACKAGE_PATH=/apps/keplervideoapp_x86_64.vpkg
+      - APP_NAME=com.amazondeveloper.keplervideoapp.main
+    volumes:
+      - $HOME/workspace/apps/build/x86_64-debug:/apps
     privileged: true
     network_mode: "host"
     ports:
