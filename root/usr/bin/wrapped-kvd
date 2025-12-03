@@ -22,3 +22,4 @@ start_simulator
 wait_until_simulator_is_running
 wait_until_simulator_is_connected
 wmctrl -c "Emulator Running in Nested Virtualization"
+kepler device uninstall-app -a com.amazon.keplerlauncherapp.main
