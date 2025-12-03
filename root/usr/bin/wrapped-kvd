@@ -51,6 +51,7 @@ wait_until_simulator_is_connected
 close_popup
 start_automation_toolkit_service
 kepler device uninstall-app -a com.amazon.keplerlauncherapp.main
+wmctrl -r "Kepler Virtual Device" -e 0,20,20,1700,880
 run_appium_server
 install_app
 run_app
