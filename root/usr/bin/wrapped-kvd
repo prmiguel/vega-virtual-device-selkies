@@ -39,6 +39,7 @@ wait_until_simulator_is_running
 close_popup
 wait_until_simulator_is_connected
 close_popup
+kepler device run-cmd -d Simulator --command 'touch /tmp/automation-toolkit.enable'
 kepler device uninstall-app -a com.amazon.keplerlauncherapp.main
 install_app
 run_app
