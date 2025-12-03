@@ -26,6 +26,7 @@ services:
     ports:
       - 3000:3000
       - 3001:3001
+      - 4723:4723
     shm_size: "2gb"
     devices:
       - /dev/kvm:/dev/kvm
