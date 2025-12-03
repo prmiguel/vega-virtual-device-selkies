@@ -13,7 +13,7 @@ RUN apt-get update && \
   cpu-checker \
   libvirt-clients \
   libvirt-daemon \
-  qemu-system-x86 && \
+  qemu-system-x86 \
   wmctrl && \
   chmod 777 -R /config
 
