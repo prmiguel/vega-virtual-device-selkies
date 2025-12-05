@@ -168,16 +168,20 @@ http://localhost:4723
 
 ### Example Test Connection
 
-```python
-from appium import webdriver
-from appium.options.android import UiAutomator2Options
+```java
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.options.UiAutomator2Options;
+import java.net.URL;
 
-options = UiAutomator2Options()
-options.platform_name = "Kepler"
-options.device_name = "Simulator"
-options.app_package = "com.amazondeveloper.keplervideoapp.main"
+UiAutomator2Options options = new UiAutomator2Options();
+options.setPlatformName("Kepler");
+options.setDeviceName("Simulator");
+options.setAppPackage("com.amazondeveloper.keplervideoapp.main");
 
-driver = webdriver.Remote("http://localhost:4723", options=options)
+AppiumDriver driver = new AppiumDriver(
+    new URL("http://localhost:4723"), 
+    options
+);
 ```
 
 ## 🐛 Troubleshooting
@@ -242,34 +246,67 @@ If you see KVM-related errors, ensure:
 
 ### Example Automation Test
 
-```python
-# example_test.py
-from appium import webdriver
-from appium.options.android import UiAutomator2Options
-import time
+```java
+// ExampleTest.java
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.options.UiAutomator2Options;
+import java.net.URL;
+import java.time.Duration;
 
-def test_kepler_app():
-    options = UiAutomator2Options()
-    options.platform_name = "Kepler"
-    options.device_name = "Simulator"
-    options.app_package = "com.amazondeveloper.keplervideoapp.main"
+public class ExampleTest {
     
-    driver = webdriver.Remote("http://localhost:4723", options=options)
+    public static void testVegaApp() throws Exception {
+        UiAutomator2Options options = new UiAutomator2Options();
+        options.setPlatformName("Kepler");
+        options.setDeviceName("Simulator");
+        options.setAppPackage("com.amazondeveloper.keplervideoapp.main");
+        
+        AppiumDriver driver = new AppiumDriver(
+            new URL("http://localhost:4723"), 
+            options
+        );
+        
+        try {
+            // Your test code here
+            Thread.sleep(5000); // Wait for app to load
+            System.out.println("App launched successfully!");
+        } finally {
+            driver.quit();
+        }
+    }
     
-    try:
-        # Your test code here
-        time.sleep(5)  # Wait for app to load
-        print("App launched successfully!")
-    finally:
-        driver.quit()
+    public static void main(String[] args) throws Exception {
+        testVegaApp();
+    }
+}
+```
 
-if __name__ == "__main__":
-    test_kepler_app()
+**Maven Dependencies** (add to `pom.xml`):
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>io.appium</groupId>
+        <artifactId>java-client</artifactId>
+        <version>9.0.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>4.15.0</version>
+    </dependency>
+</dependencies>
 ```
 
 Run the test:
 ```bash
-python example_test.py
+javac ExampleTest.java
+java ExampleTest
+```
+
+Or with Maven:
+```bash
+mvn test
 ```
 
 ## 📚 Additional Resources
