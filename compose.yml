@@ -1,13 +1,12 @@
 ---
 services:
-  k-virtual-device:
-    image: k-virtual-device
+  vvd:
+    image: vvd
     platform: linux/amd64
-    container_name: kvd
+    container_name: vvd
     build:
       context: .
       args:
-        - KEPLER_TOKEN=${KEPLER_TOKEN}
         - SDK_VERSION=${SDK_VERSION}
         - INSTALLER_SCRIPT=${INSTALLER_SCRIPT}
         - SDK_URL=${SDK_URL}
@@ -29,5 +28,5 @@ services:
       - 4723:4723
     shm_size: "2gb"
     devices:
-      - /dev/kvm:/dev/kvm
+      - /dev/kvm
     restart: unless-stopped
