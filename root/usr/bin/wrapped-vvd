@@ -23,13 +23,17 @@ function close_popup {
 }
 
 function install_app {
-    echo "Install App"
-    kepler device install-app -d Simulator -p $PACKAGE_PATH
+    if [ -n "$PACKAGE_PATH" ]; then
+        echo "Install App"
+        kepler device install-app -d Simulator -p $PACKAGE_PATH
+    fi
 }
 
 function run_app {
-    echo "Run App"
-    kepler device launch-app -d Simulator -a $APP_NAME
+    if [ -n "$APP_NAME" ]; then
+        echo "Run App"
+        kepler device launch-app -d Simulator -a $APP_NAME
+    fi
 }
 
 function start_automation_toolkit_service {
@@ -42,16 +46,32 @@ function run_appium_server {
     nohup appium server --address 0.0.0.0 -p 4723 -g /logs/appium-server.log --allow-cors --log-no-colors --log-timestamp >> /tmp/appium-cli.log 2>&1 &
 }
 
+function configure_appium_server {
+     if [ -n "${APPIUM_SERVER_ENABLED+x}" ]; then
+        echo "Configure Appium"
+        start_automation_toolkit_service
+        run_appium_server
+    fi
+}
+
+function uninstall_launch_app {
+    echo "Uninstall App"
+    kepler device uninstall-app -d Simulator -a com.amazon.keplerlauncherapp.main
+}
+
+function set_window_position {
+    echo "Set Window Position"
+    wmctrl -r "Kepler Virtual Device" -e 0,20,20,1700,880
+}
+
 kepler --version
 start_simulator
 close_popup
 wait_until_simulator_is_running
-close_popup
 wait_until_simulator_is_connected
 close_popup
-start_automation_toolkit_service
-kepler device uninstall-app -a com.amazon.keplerlauncherapp.main
-wmctrl -r "Kepler Virtual Device" -e 0,20,20,1700,880
-run_appium_server
+uninstall_launch_app
+set_window_position
+configure_appium_server
 install_app
 run_app
