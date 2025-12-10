@@ -225,7 +225,7 @@ If you see KVM-related errors, ensure:
 
 ## 🎬 Demo
 
-<!-- TODO: Add demo section with screenshots, videos, or example usage -->
+🎬 **[GIF Demonstration (Running VVD)](https://prmiguel.github.io/media/6a064c62-20a0-4bd3-9262-f05481521fbd.gif)**
 
 ### Quick Start Demo
 
