@@ -46,14 +46,6 @@ function run_appium_server {
     nohup appium server --address 0.0.0.0 -p 4723 -g /logs/appium-server.log --allow-cors --log-no-colors --log-timestamp >> /tmp/appium-cli.log 2>&1 &
 }
 
-function configure_appium_server {
-     if [ -n "${APPIUM_SERVER_ENABLED+x}" ]; then
-        echo "Configure Appium"
-        start_automation_toolkit_service
-        run_appium_server
-    fi
-}
-
 function uninstall_launch_app {
     echo "Uninstall App"
     kepler device uninstall-app -d Simulator -a com.amazon.keplerlauncherapp.main
@@ -72,6 +64,8 @@ wait_until_simulator_is_connected
 close_popup
 uninstall_launch_app
 set_window_position
-configure_appium_server
+start_automation_toolkit_service
+run_appium_server
 install_app
 run_app
+nohup fastmcp run /vega-virtual-device-mcp/server.py --transport http --host 0.0.0.0 --port 8000 >> /tmp/mcp-server.log 2>&1 &

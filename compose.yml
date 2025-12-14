@@ -13,8 +13,8 @@ services:
         - SIM_URL=${SIM_URL}
         - DIRECTED_ID=${DIRECTED_ID}
     environment:
-    #   - PUID=1000
-    #   - PGID=1000
+      #   - PUID=1000
+      #   - PGID=1000
       - TZ=Etc/UTC
       - PACKAGE_PATH=/apps/keplervideoapp_x86_64.vpkg
       - APP_NAME=com.amazondeveloper.keplervideoapp.main
@@ -26,6 +26,7 @@ services:
       - 3000:3000
       - 3001:3001
       - 4723:4723
+      - 8000:8000
     shm_size: "2gb"
     devices:
       - /dev/kvm

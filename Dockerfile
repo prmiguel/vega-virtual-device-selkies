@@ -58,6 +58,12 @@ RUN npm add -g appium@2.2.2 \
   && appium driver install --source=npm @amazon-devices/appium-kepler-driver@3.30.0 \
   && npm add -g selenium-webdriver
 
+USER root
+ENV PATH=${KEPLER_SDK_PATH}/runtimes/python/bin:$PATH
+RUN git clone https://github.com/prmiguel/vega-virtual-device-mcp.git \
+  && cd vega-virtual-device-mcp \
+  && pip install -r requirements.txt
+
 ### Stage 2: Automatino Test
 # ARG SDK_VERSION
 # ARG SDK_ROOT=/kepler/sdk
