@@ -231,6 +231,8 @@ If you see KVM-related errors, ensure:
 
 🎬 **[GIF Demonstration (MCP Server Inspector)](https://prmiguel.github.io/media/d800cc8b-7a63-4f05-b295-bb30bb7f8bf8.gif)**
 
+🎬 **[GIF Demonstration (MCP Client - Cursor)](https://prmiguel.github.io/media/6dd1949d-6a77-4823-bbc7-f1fcc6a33093.gif)**
+
 ## 📚 Additional Resources
 
 - [Amazon Vega SDK Documentation](https://developer.amazon.com/docs/vega/0.21/install-vega-sdk.html)
