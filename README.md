@@ -229,6 +229,8 @@ If you see KVM-related errors, ensure:
 
 🎬 **[GIF Demonstration (Appium Inspector)](https://prmiguel.github.io/media/a493c3af-4216-487a-b780-9abb04899d62.gif)**
 
+🎬 **[GIF Demonstration (Appium - Test Automation)](https://prmiguel.github.io/media/2a707766-5f70-4b64-a898-aa3ae3df3cd2.gif)**
+
 🎬 **[GIF Demonstration (MCP Server Inspector)](https://prmiguel.github.io/media/d800cc8b-7a63-4f05-b295-bb30bb7f8bf8.gif)**
 
 🎬 **[GIF Demonstration (MCP Client - Cursor)](https://prmiguel.github.io/media/6dd1949d-6a77-4823-bbc7-f1fcc6a33093.gif)**
